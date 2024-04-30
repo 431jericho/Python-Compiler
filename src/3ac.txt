@@ -1,0 +1,63 @@
+
+beginfunc A.__init__:
+    self         =   popparam 
+    a            =   popparam 
+    b            =   popparam 
+    c            =   popparam 
+    $2           =   a                              
+    *yo1(self + 24) =   $2                             
+    $4           =   b                              
+    *yo1(self + 48) =   $4                             
+    $5           =   *yo4(self + 24)                   
+    $6           =   *yo4(self + 48)                   
+    $7           =   $5           *    $6           
+    param $7
+    callfunc print        1            
+
+endfuncA.__init__:
+
+beginfunc A.print_name:
+    self         =   popparam 
+    a            =   popparam 
+    $8           =   *yo4(self + 24)                   
+    $9           =   *yo4(self + 48)                   
+    $10          =   $8           *    $9           
+    param $10
+    callfunc print        1            
+
+endfuncA.print_name:
+
+beginfunc main:
+    $11          =   3                              
+    $12          =   4                              
+    $13          =   5                              
+    param 112
+    callfunc allocmem     1            
+    $14          =   popreturn 
+    param $13
+    param $12
+    param $11
+    param $14
+    callfunc A.__init__   4            
+    o            =   $14                            
+    $15          =   3                              
+    param $15
+    $16          =   o                              
+    param o
+                 =   A.print_name callfuncx 2            
+    $17          =   popreturn 
+
+endfuncmain:
+
+beginif1:
+    $18          =   __name__                       
+    $19          =   $string1          "__main__"   
+    $20          =   $18          ==   $19          
+    if_false     $20          goto endif1
+                 =   main         callfuncz 0            
+    $21          =   popreturn 
+    goto endifblock1
+
+endif1:
+
+endifblock1:

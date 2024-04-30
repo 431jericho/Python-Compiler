@@ -1,0 +1,33 @@
+
+beginfunc main:
+    $1           =   0                              
+    i            =   $1                             
+    $2           =   5                              
+    $4           =   0                              
+
+beginfor1:
+    $5           =   $4           <    $2           
+    if_false     $5           goto endfor1
+    i            =   $4                             
+    $3           =   i                              
+    param $3
+    callfunc print        1            
+    $4           =   $4           +    1            
+    goto beginfor1
+
+endfor1:
+
+endfuncmain:
+
+beginif1:
+    $6           =   __name__                       
+    $7           =   $string1          "__main__"   
+    $8           =   $6           ==   $7           
+    if_false     $8           goto endif1
+    callfunc main         0            
+    $9           =   popreturn 
+    goto endifblock1
+
+endif1:
+
+endifblock1:
